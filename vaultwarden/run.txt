@@ -1,0 +1,1 @@
+docker run -d --name vaultwarden -v ./vw-data/:/data/ -p 8022:80 --restart=always vaultwarden/server:latest

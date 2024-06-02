@@ -1,0 +1,1 @@
+docker run --name=neo4j --publish=7474:7474 --publish=7687:7687 --restart=always  --volume=./data:/root/data neo4j

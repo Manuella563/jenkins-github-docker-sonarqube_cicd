@@ -1,0 +1,8 @@
+docker run --name silverpeas -p 8080:8000 -d \
+    -e DB_NAME="Silverpeas" \
+    -e DB_USER="silverpeas" \
+    -e DB_PASSWORD="silverpeas" \
+    -v silverpeas-log:/opt/silverpeas/log \
+    -v silverpeas-data:/opt/silverpeas/data \
+    --link postgresql:10.176.16.22 \
+    silverpeas

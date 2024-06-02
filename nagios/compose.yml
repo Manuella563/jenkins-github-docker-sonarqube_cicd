@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  nagios4:
+    image: jasonrivers/nagios:latest
+    container_name: nagios4
+    ports:
+      - "8088:80"
+    volumes:
+      - ./etc/:/opt/nagios/etc/
+      - ./var:/opt/nagios/var/
+      - ./custom-plugins:/opt/Custom-Nagios-Plugins
+      - ./nagiosgraph/var:/opt/nagiosgraph/var
+      - ./nagiosgraph/etc:/opt/nagiosgraph/etc
+
+
+volumes:
+  nagios_vol:

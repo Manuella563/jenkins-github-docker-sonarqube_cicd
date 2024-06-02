@@ -1,0 +1,1 @@
+docker run  --name influxdb -p 8086:8086  -v myInfluxVolume:/var/lib/influxdb2    --restart=always influxdb:latest

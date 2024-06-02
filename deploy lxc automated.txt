@@ -1,0 +1,42 @@
+How to Deploy LXC Container in Proxmox with Ansible
+
+Ansible is an open source, command-line IT automation software application written in Python. It can configure systems, deploy software, and orchestrate advanced workflows to support application deployment, system updates, and more.
+
+Pre-requisites:
+- Already set SSH and Authentication to the targeted Proxmox server.
+- Ansible setup using Ansible docs.
+- Basic Ubuntu 20.04, its container, with 1 Cpu cores, 512 MB Memory, and 8 GB of storage.
+- Nameserver at 8.8.8.8.
+- ISO/templates that will reference when setting up the OS.
+- Storing Container & VM disks on the Local Proxmox volume and using local for the storage volume. if templates are local to the Machine, use local for the Template volume.
+
+Link to yaml file
+https://gitlab.com/aminosninatos/yout...
+
+
+
+
+---
+- name: Create new LXC container in Proxmox
+  hosts: all
+  tasks:
+    - name: 'Create LXC Container'
+      proxmox:
+          vmid: '300' # Specifying Container ID
+          api_user: root # Proxmox user
+          api_password: P@ssw0rd # Password in plaintext !!!
+          api_host: x.x.x.x # Proxmox hostname
+          password: 'P@ssw0rd' # Password in plaintext !!!
+          hostname: 'ansible-lxc' # Container hostname
+          node: 'proxmox01' # Name of Proxmox host
+          cores: '1'
+          cpus: '1'
+          cpuunits: '1000'
+          ostemplate: 'local:vztmpl/ubuntu-20.04-standard_20.04-1_amd64.tar.gz' # Or use local:vztmpl/...
+          storage: 'local' # Or use 'local'
+          disk: '8'
+          memory: '512'
+          nameserver: '8.8.8.8'
+          netif: '{"net0":"name=eth0,ip=192.168.100.38/24,gw=192.168.100.1,ip6=dhcp,bridge=vmbr0"}'
+          state: 'present'
+

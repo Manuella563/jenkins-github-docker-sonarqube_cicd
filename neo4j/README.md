@@ -1,0 +1,9 @@
+1 CPUS
+
+512MB RAM
+
+100MB Swap
+
+2GB HDD
+
+LXC = true

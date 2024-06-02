@@ -1,0 +1,5 @@
+homarr
+watchtower
+pgadmin4
+gitlab
+oracledb 12c

@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    ports:
+      - 54:54/tcp
+      - 54:54/udp
+      - 67:67/udp
+      - 83:80/tcp
+      - 8443:443/tcp
+    environment:
+      - TZ=Africa/Nairobi
+      - WEBPASSWORD=pihole
+    volumes:
+      - ./etc:/etc/pihole
+      - ./dnsmasq:/etc/dnsmasq.d
+#    restart: unless-stopped

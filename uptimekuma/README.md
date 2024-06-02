@@ -1,0 +1,7 @@
+1 CPU
+
+200MB RAM
+
+100MB Swap
+
+2GB HDD
